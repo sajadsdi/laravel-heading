@@ -6,8 +6,8 @@ use Sajadsdi\DtoTool\DTO;
 
 class Heading extends DTO
 {
-    private string $title       = '';
-    private string $description = '';
+    protected string $title       = '';
+    protected string $description = '';
 
     public function getTitle(): string
     {
