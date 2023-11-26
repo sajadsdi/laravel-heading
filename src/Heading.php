@@ -2,12 +2,15 @@
 
 namespace Sajadsdi\LaravelHeading;
 
-use Sajadsdi\DtoTool\Concerns\GetterSetter;
+use Sajadsdi\DtoTool\DTO;
 
-class Heading
+class Heading extends DTO
 {
-    use GetterSetter;
+    public string $title       = '';
+    public string $description = '';
 
-    public string $title;
-    public string $description;
+    public function getTitle(): string
+    {
+        return env('APP_NAME') . $this->title ? " - " . $this->title : "";
+    }
 }
