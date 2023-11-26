@@ -1,0 +1,32 @@
+{
+    "name": "sajadsdi/laravel-heading",
+    "description": "Easy manage page Heading !",
+    "type": "laravel-package",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/Support/helpers.php"
+        ],
+        "psr-4": {
+            "Sajadsdi\\LaravelHeading\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "SajaD SaeeDi",
+            "email": "thunder11like@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "laravel/framework": "^10.0",
+        "sajadsdi/dto-tool": "^1.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sajadsdi\\LaravelHeading\\Providers\\LaravelHeadingServiceProvider"
+            ]
+        }
+    }
+}
