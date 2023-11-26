@@ -8,9 +8,11 @@ if (!function_exists('heading')) {
         $heading = app()->make(Heading::class);
         if ($name) {
             if($value){
-                $heading->{$name} = $value;
+                $method = 'set' . ucfirst($name);
+                $heading->{$method}($value);
             }else{
-                return $heading->{$name};
+                $method = 'get' . ucfirst($name);
+                return $heading->{$method}();
             }
         }
         return $heading;

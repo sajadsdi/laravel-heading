@@ -6,11 +6,11 @@ use Sajadsdi\DtoTool\DTO;
 
 class Heading extends DTO
 {
-    public string $title       = '';
-    public string $description = '';
+    private string $title       = '';
+    private string $description = '';
 
     public function getTitle(): string
     {
-        return env('APP_NAME') . $this->title ? " - " . $this->title : "";
+        return config('app.name') . $this->title ? " - " . $this->title : "";
     }
 }
