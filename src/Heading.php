@@ -9,8 +9,17 @@ class Heading extends DTO
     protected string $title       = '';
     protected string $description = '';
 
-    public function getTitle(): string
+    public function __construct()
     {
-        return config('app.name') . $this->title ? " - " . $this->title : "";
+        $this->setTitle(config('app.name'));
+    }
+
+    public function setTitle($title):void
+    {
+        if($this->title){
+            $this->title .= " - " . $title;
+        }else{
+            $this->title = $title;
+        }
     }
 }
