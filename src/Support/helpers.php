@@ -8,7 +8,6 @@ if (!function_exists('heading')) {
      * @param string|null $name
      * @param mixed|null $value
      * @return mixed|Heading
-     * @throws BindingResolutionException
      */
     function heading(string $name = null, mixed $value = null): mixed
     {

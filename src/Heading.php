@@ -2,24 +2,44 @@
 
 namespace Sajadsdi\LaravelHeading;
 
-use Sajadsdi\DtoTool\DTO;
+use Sajadsdi\DtoTool\Concerns\DTOTrait;
 
-class Heading extends DTO
+class Heading
 {
-    protected string $title       = '';
-    protected string $description = '';
+    use DTOTrait;
+    protected array $config;
 
-    public function __construct()
+    private string $title       = '';
+    private string $description = '';
+    private string $robots      = '';
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function __construct(array $config)
     {
-        $this->setTitle(config('app.name'));
+        $this->config = $config;
+        $this->reset();
     }
 
-    public function setTitle($title):void
+    /**
+     * @param $title
+     * @return void
+     */
+    public function setTitle($title): void
     {
-        if($this->title){
-            $this->title .= " - " . $title;
-        }else{
+        if ($this->title) {
+            $this->title .= " {$this->config['title_separator']} " . $title;
+        } else {
             $this->title = $title;
         }
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function reset()
+    {
+        $this->init($this->config);
     }
 }
