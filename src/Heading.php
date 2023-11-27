@@ -9,9 +9,9 @@ class Heading
     use DTOTrait;
     protected array $config;
 
-    private string $title       = '';
-    private string $description = '';
-    private string $robots      = '';
+    private string $title;
+    private string $description;
+    private string $robots;
 
     /**
      * @throws \ReflectionException
@@ -40,6 +40,9 @@ class Heading
      */
     public function reset()
     {
+        $this->title = "";
+        $this->description = "";
+        $this->robots = "";
         $this->init($this->config);
     }
 }
