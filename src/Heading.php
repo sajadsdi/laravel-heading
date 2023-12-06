@@ -2,6 +2,7 @@
 
 namespace Sajadsdi\LaravelHeading;
 
+use ReflectionException;
 use Sajadsdi\DtoTool\Concerns\DTOTrait;
 
 class Heading
@@ -14,11 +15,11 @@ class Heading
     private string $robots;
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
-    public function __construct(array $config)
+    public function __construct()
     {
-        $this->config = $config;
+        $this->config = config('laravel-heading');
         $this->reset();
     }
 
@@ -36,7 +37,7 @@ class Heading
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function reset()
     {
