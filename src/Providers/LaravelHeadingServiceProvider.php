@@ -3,7 +3,6 @@
 namespace Sajadsdi\LaravelHeading\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Sajadsdi\LaravelHeading\Console\InstallCommand;
 use Sajadsdi\LaravelHeading\Console\PublishCommand;
 use Sajadsdi\LaravelHeading\Heading;
 
@@ -12,11 +11,14 @@ class LaravelHeadingServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->singleton(Heading::class);
+
     }
 
     public function boot(): void
     {
+        //binding in boot for use flexible config file
+        $this->app->singleton(Heading::class);
+
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
             $this->registerCommands();
@@ -26,8 +28,7 @@ class LaravelHeadingServiceProvider extends ServiceProvider
     private function registerCommands()
     {
         $this->commands([
-            PublishCommand::class,
-            InstallCommand::class
+            PublishCommand::class
         ]);
     }
 
