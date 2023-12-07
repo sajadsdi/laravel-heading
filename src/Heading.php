@@ -19,7 +19,7 @@ class Heading
      */
     public function __construct()
     {
-        $this->config = config('laravel-heading');
+        $this->config = config('heading');
         $this->reset();
     }
 

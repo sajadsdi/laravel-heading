@@ -11,14 +11,11 @@ class LaravelHeadingServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-
+        $this->app->singleton(Heading::class);
     }
 
     public function boot(): void
     {
-        //binding in boot for use flexible config file
-        $this->app->singleton(Heading::class);
-
         if ($this->app->runningInConsole()) {
             $this->configurePublishing();
             $this->registerCommands();
@@ -34,6 +31,6 @@ class LaravelHeadingServiceProvider extends ServiceProvider
 
     private function configurePublishing()
     {
-        $this->publishes([__DIR__ . '/../../config/laravel-heading.php' => config_path('laravel-heading.php')], 'laravel-heading-configure');
+        $this->publishes([__DIR__ . '/../../config/heading.php' => config_path('heading.php')], 'laravel-heading-configure');
     }
 }
